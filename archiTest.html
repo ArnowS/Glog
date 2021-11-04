@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Protein visualizer</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h1>Outil de visualisation protéique</h1>
+        <section>
+            <ul class="menu">
+                <li>
+                    <a href="archiTest.html" class="actif">Visualizer</a>
+                </li>
+                <li>
+                    <a href="#">PDB uploading</a>
+                </li>
+                <li>
+                    <a href="#">Comparison results</a>
+                </li>
+            </ul>
+        </section>
+        <hr>
+        <section>
+            <h1>Visualisation des structures protéiques</h1>
+            <script src="http://3Dmol.csb.pitt.edu/build/3Dmol-min.js"></script>
+        <div class="row">
+        <div id="container-01" class="mol-container"></div>
+        <div id="container-02" class="mol-container"></div>
+        </div>
+        <script>
+            $(function() {
+                let element = $('#container-01');
+                let element2= $('#container-02');
+                let config = { backgroundColor: 'white' };
+                let viewer = $3Dmol.createViewer( element, config );
+                    $3Dmol.download("pdb:1FAT",viewer,{multimodel:true, frames:true},function(){
+                    viewer.setStyle({chain:'B'},{cartoon:{color:'red'}});
+                    viewer.setStyle({chain:'B',invert:true},{cartoon:{color:'blue'}});
+                    viewer.render();
+                    viewer.zoom(0.8, 2000);
+                });
+                let viewer2 = $3Dmol.createViewer( element2, config );
+                    $3Dmol.download("pdb:7K9J",viewer2,{multimodel:true, frames:true},function(){
+                    viewer2.setStyle({chain:'B'},{cartoon:{color:'green'}});
+                    viewer2.render();
+                    viewer2.zoom(0.8, 2000);
+                });
+
+            });
+        </script>
+        </section>
+        <hr>
+        <section>
+            <h1>Alignement des séquences protéiques</h1>
+        </section>
+    </body>
+</html>
