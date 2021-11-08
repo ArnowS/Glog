@@ -1,0 +1,15 @@
+const express = require('express');
+const app = express();
+
+const hostname = 'localhost';
+const port = 8000;
+const url_app = 'visuprot'
+
+
+app.use(express.static(__dirname + '/public'));
+app.get(`/${url_app}`, function(req, res) {
+    res.sendFile(__dirname + '/public/test.html');
+});
+app.listen(port, () => {
+    console.log(`app is running at http://${hostname}:${port}/${url_app}`);
+});
