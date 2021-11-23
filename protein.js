@@ -17,3 +17,6 @@ const creation_prot = (id) => {
   })
   return prot;
 }
+
+let histo_prot = [];
+let histo_id = [];
