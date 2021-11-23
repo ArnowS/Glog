@@ -25,31 +25,44 @@
         <section>
             <h1>Visualisation des structures protéiques</h1>
             <script src="http://3Dmol.csb.pitt.edu/build/3Dmol-min.js"></script>
+            <div class="navbar">
+                <a href="archiTest.html" class="actif">Home</a>
+                <div class="subnav">
+                    <button class="subnavbtn">Charging PDB files <i class="fa fa-caret-down"></i></button>
+                    <div class="subnav-content">
+                      <a href="#onlin" onclick="submitted()">Online</a>
+                      <input type="search" name="PDBsearch" id="query" placeholder="Search.." maxlength=4 >
+                      <input type="search" name="PDBsearch" id="query2" placeholder="Search.." maxlength=4 >
+                      <a href="#local">Local</a>
+                    </div>
+                </div>
+                <div class="subnav">
+                  <button class="subnavbtn">Style <i class="fa fa-caret-down"></i></button>
+                  <div class="subnav-content">
+                    <a href="#" id='Sphe'>Spheres</a>
+                    <a href="#" id='Bat'>Stick</a>
+                    <a href="#" id="Cart" >Cartoon</a>
+                    <a href="#" id='Lin'>Lines</a>
+                    <a href="#" id='Cros'>Cross</a>
+                  </div>
+                </div>
+                <div class="subnav">
+                  <button class="subnavbtn">Partners <i class="fa fa-caret-down"></i></button>
+                  <div class="subnav-content">
+                    <a href="#link1">Link 1</a>
+                    <a href="#link2">Link 2</a>
+                    <a href="#link3">Link 3</a>
+                    <a href="#link4">Link 4</a>
+                  </div>
+                </div>
+                <a href="#contact">Contact</a>
+              </div>
         <div class="row">
         <div id="container-01" class="mol-container"></div>
         <div id="container-02" class="mol-container"></div>
         </div>
-        <script>
-            $(function() {
-                let element = $('#container-01');
-                let element2= $('#container-02');
-                let config = { backgroundColor: 'white' };
-                let viewer = $3Dmol.createViewer( element, config );
-                    $3Dmol.download("pdb:1FAT",viewer,{multimodel:true, frames:true},function(){
-                    viewer.setStyle({chain:'B'},{cartoon:{color:'red'}});
-                    viewer.setStyle({chain:'B',invert:true},{cartoon:{color:'blue'}});
-                    viewer.render();
-                    viewer.zoom(0.8, 2000);
-                });
-                let viewer2 = $3Dmol.createViewer( element2, config );
-                    $3Dmol.download("pdb:7K9J",viewer2,{multimodel:true, frames:true},function(){
-                    viewer2.setStyle({chain:'B'},{cartoon:{color:'green'}});
-                    viewer2.render();
-                    viewer2.zoom(0.8, 2000);
-                });
-
-            });
-        </script>
+        <script src="select.js"></script>
+        <script src="load.js"></script>
         </section>
         <hr>
         <section>
