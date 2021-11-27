@@ -51,6 +51,24 @@ function getType(row) {
     }
     return outputs;
   }
+
+  function parseSeqres(row) {
+    const dico = {
+      code3 : ['ALA','ARG','ASN','ASP','CYS','GLU','GLN','GLY','HIS','ILE','LEU','LYS','MET','PHE','PRO','SER','THR','TRP','TYR','VAL'],
+      code1 : ['A','R','N','D','C','E','Q','G','H','I','L','K', 'M','F','P','S','T', 'W','Y','V']
+  }
+    let row_space = row.split(" ");
+    row_space = row_space.filter(e => e);
+    let row_seq = '';
+    for (let i=4; i<row_space.length; i++){
+      let index = dico.code3.indexOf(row_space[i]);
+      if (index != -1){
+        row_space[i] = dico.code1[index];
+        row_seq += row_space[i];
+      }
+    }
+    return row_seq
+  }
   
   
   function parseTODO(row) {
@@ -146,7 +164,7 @@ function getType(row) {
       model.header.dummies.push( parseTODO(row) );
     }
     else if (tag === 'SEQRES') {
-      model.header.dummies.push( parseTODO(row) );
+      model.sequence += parseSeqres(row);
     }
     else if (tag === 'MODRES') {
       model.header.dummies.push( parseTODO(row) );
@@ -224,15 +242,12 @@ function getType(row) {
     return model;
   }
   
-  /**
-   * PDB Parser
-   * @author Jean-Christophe Taveau
-   */
   function parsePDB(text) {
     // Init
     let model = {
-      header: {dummies:[]}, 
+      header: {dummies:[]},
       atoms:[],
+      sequence:'',
       features : {
         box: [Number.MAX_VALUE,Number.MAX_VALUE,Number.MAX_VALUE,Number.MIN_VALUE,Number.MIN_VALUE,Number.MIN_VALUE],
         cg: [0,0,0],

@@ -2,7 +2,7 @@
 
 class proteine {
     constructor(id) {
-      this.id = id;
+      this.id = id.toUpperCase();
     }
 }
 
