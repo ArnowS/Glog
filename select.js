@@ -43,15 +43,31 @@ $("#Lin").on('click', function() {
     viewer.setStyle({line:{}});
     viewer.render();
 });
+$("#Lin").on('click', function() {
+    viewer2.setStyle({line:{}});
+    viewer2.render();
+});
 $("#Sphe").on('click', function() {
     viewer.setStyle({sphere:{}});
     viewer.render();
+});
+$("#Sphe").on('click', function() {
+    viewer2.setStyle({sphere:{}});
+    viewer2.render();
 });
 $("#Bat").on('click', function() {
     viewer.setStyle({stick:{}});
     viewer.render();
 });
+$("#Bat").on('click', function() {
+    viewer2.setStyle({stick:{}});
+    viewer2.render();
+});
 $("#Cros").on('click', function() {
     viewer.setStyle({cross:{}});
     viewer.render();
+});
+$("#Cros").on('click', function() {
+    viewer2.setStyle({cross:{}});
+    viewer2.render();
 });
