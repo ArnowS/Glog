@@ -61,7 +61,7 @@ body {
   /* Navigation links */
   .navbar a {
     float: left;
-    font-size: 16px;
+    font-size: 20px;
     color: white;
     text-align: center;
     padding: 14px 16px;
@@ -76,7 +76,7 @@ body {
   
   /* Subnav button */
   .subnav .subnavbtn {
-    font-size: 16px;
+    font-size: 20px;
     border: none;
     outline: none;
     color: white;
@@ -124,9 +124,9 @@ body {
     float: left;
     padding: 6px;
     border: none;
-    margin-top: 14px;
+    margin-top: 8px;
     margin-right: 8px;
-    font-size: 10px;
+    font-size: 20px;
   }
   
   /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
