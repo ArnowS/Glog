@@ -31,3 +31,28 @@ function submit_seq(){
     idseq1.innerHTML = seq1;
     idseq2.innerHTML = seq2;
 }
+
+function downloadURI(uri) {
+    n = `${new Date().getTime()}.png`;
+    var link = document.createElement("a");
+    link.download = n;
+    link.href = uri;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    delete link;
+}
+
+function getImages(viewer,viewer2){
+    downloadURI(viewer.pngURI())
+    downloadURI(viewer2.pngURI())
+}
+
+function getModels(viewer,viewer2){
+    JSON1 = exportJSON(includesStyles=True,viewer.getModel())
+    JSON2 = exportJSON(includesStyles=True,viewer2.getModel())
+    console.info(JSON1)
+    console.info(JSON2)
+    return [JSON1,JSON2]
+}
+function exportAll(){}
