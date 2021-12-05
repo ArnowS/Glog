@@ -52,22 +52,36 @@ function getType(row) {
     return outputs;
   }
 
-  function parseSeqres(row) {
+  function parseSeqres(row,model) {
     const dico = {
       code3 : ['ALA','ARG','ASN','ASP','CYS','GLU','GLN','GLY','HIS','ILE','LEU','LYS','MET','PHE','PRO','SER','THR','TRP','TYR','VAL'],
       code1 : ['A','R','N','D','C','E','Q','G','H','I','L','K', 'M','F','P','S','T', 'W','Y','V']
-  }
+  } 
+    let cpt = 0;
+    if (model.sequence.AAs.length > 0){
+      let taille = model.sequence.AAs.length;
+      let last = model.sequence.AAs[taille-1];
+      cpt = last.position;
+    }
+    else{
+      cpt = 0;
+    }
     let row_space = row.split(" ");
     row_space = row_space.filter(e => e);
     let row_seq = '';
     for (let i=4; i<row_space.length; i++){
       let index = dico.code3.indexOf(row_space[i]);
+      let AA = {aa:'',position:''};
       if (index != -1){
         row_space[i] = dico.code1[index];
         row_seq += row_space[i];
+        AA.aa = row_space[i];
+        AA.position = cpt;
+        model.sequence.AAs.push(AA);
+        cpt++;
       }
     }
-    return row_seq
+    return row_seq;
   }
   
   
@@ -164,7 +178,8 @@ function getType(row) {
       model.header.dummies.push( parseTODO(row) );
     }
     else if (tag === 'SEQRES') {
-      model.sequence += parseSeqres(row);
+      let string_seq = parseSeqres(row,model);
+      model.sequence.seq += string_seq;
     }
     else if (tag === 'MODRES') {
       model.header.dummies.push( parseTODO(row) );
@@ -247,7 +262,8 @@ function getType(row) {
     let model = {
       header: {dummies:[]},
       atoms:[],
-      sequence:'',
+      sequence:{seq:'',
+                AAs:[]},
       features : {
         box: [Number.MAX_VALUE,Number.MAX_VALUE,Number.MAX_VALUE,Number.MIN_VALUE,Number.MIN_VALUE,Number.MIN_VALUE],
         cg: [0,0,0],
