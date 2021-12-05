@@ -7,6 +7,9 @@
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
+
+      <div class=export_canvas id="export_canvas"></div>
+
         <h1>Protein visualizer</h1>
         <hr>
         <section>
@@ -61,5 +64,6 @@
         <script src="parser.js"></script>
         <script src="nw.js"></script>
         <button onclick = nw(seq1,seq2)>Alignement</button>
+        <button onclick = getImages(viewer,viewer2)>png</button>
     </body>
 </html>
