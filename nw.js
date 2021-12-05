@@ -1,3 +1,12 @@
+let Alignement = (proteine1, proteine2) => {
+    this.proteine1 = proteine1;
+    this.proteine2 = proteine2;
+
+    this.alignements = alignements;
+    this.score = score;
+
+}
+
 //--------------------------------- FUNCTIONS --------------------------------//
 
 function createArray(length) {
@@ -82,6 +91,7 @@ function scoreNW(A, B) {
     }
     return score;
 }
+
 //----------------------------------- MAIN -----------------------------------//
 
 var blossum62 = {
@@ -733,6 +743,7 @@ var blossum62 = {
         'Z': 4
     }
 }
+
 
 let x = "KQFTKCELSQNLYDIDGYGRIALPELICTMFHTSGYDTQAIVENDESTEYGLFQISNALWCKSSQSPQSRNICDITCDKFLDDDITDDIMCAKKILDIKGIDYWIAHKALCTEKLEQWLCEKE";
 let _X = reverseString(x.toUpperCase())
