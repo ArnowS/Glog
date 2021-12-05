@@ -1,10 +1,8 @@
-let Alignement = (proteine1, proteine2) => {
-    this.proteine1 = proteine1;
-    this.proteine2 = proteine2;
-
-    this.alignements = alignements;
-    this.score = score;
-
+class Alignement {
+    constructor(proteine1, proteine2) {
+        this.proteine1 = proteine1;
+        this.proteine2 = proteine2;
+    }
 }
 
 //--------------------------------- FUNCTIONS --------------------------------//
@@ -46,7 +44,10 @@ function reverseString(str) {
     return str.split("").reverse().join("");
 }
 
-function nw(x, y, F, gap = -4) {
+function nw(x, y, gap = -4) {
+    x = reverseString(x.toUpperCase())
+    y = reverseString(y.toUpperCase())
+    F = createMatrice(x, y);
     let alignmentX = '';
     let alignmentY = '';
     i = x.length - 1;
@@ -744,15 +745,10 @@ var blossum62 = {
     }
 }
 
+let monAlignement = new Alignement(histo_prot[histo_prot.length - 2], histo_prot[histo_prot.length - 1]);
+monAlignement.alignements = nw(monAlignement.proteine1.pdb.sequence.seq, monAlignement.proteine2.pdb.sequence.seq);
+monAlignement.score = scoreNW(monAlignement.alignements[0], monAlignement.alignements[1]);
 
-let x = "KQFTKCELSQNLYDIDGYGRIALPELICTMFHTSGYDTQAIVENDESTEYGLFQISNALWCKSSQSPQSRNICDITCDKFLDDDITDDIMCAKKILDIKGIDYWIAHKALCTEKLEQWLCEKE";
-let _X = reverseString(x.toUpperCase())
-let y = "KVFGRCELAAAMKRHGLDNYRGYSLGNWVCAAKFESNFNTQATNRNTDGSTDYGILQINSRWWCNDGRTPGSRNLCNIPCSALLSSDITASVNCAKKIVSDGNGMNAWVAWRNRCKGTDVQAWIRGCRL";
-let _Y = reverseString(y.toUpperCase())
+let toExport = JSON.stringify(monAlignement);
 
-F = createMatrice(_X, _Y);
-[seq1, seq2] = nw(_X, _Y, F);
-console.log('Sequence 1', seq1);
-console.log('Sequence 2', seq2);
-let s = scoreNW(seq1, seq2);
-console.log('Score moyen', s / seq1.length);
+console.log(monAlignement);
