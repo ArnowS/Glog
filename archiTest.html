@@ -13,7 +13,6 @@
         <h1>Protein visualizer</h1>
         <hr>
         <section>
-            <h1>Visualisation des structures protéiques</h1>
             <script src="http://3Dmol.csb.pitt.edu/build/3Dmol-min.js"></script>
             <div class="navbar">
                 <a href="archiTest.html" class="actif">Home</a>
@@ -37,15 +36,13 @@
                   </div>
                 </div>
                 <div class="subnav">
-                  <button class="subnavbtn">Partners <i class="fa fa-caret-down"></i></button>
-                  <div class="subnav-content">
-                    <a href="#link1">Link 1</a>
-                    <a href="#link2">Link 2</a>
-                    <a href="#link3">Link 3</a>
-                    <a href="#link4">Link 4</a>
-                  </div>
+                  <button class="subnavbtn" onclick=nw(seq1,seq2)>Alignement <i class="fa fa-caret-down"></i></button>
+                  <div id="seq1"></div>
+                  <div id="seq2"></div>
                 </div>
-                <a href="#contact">Contact</a>
+                <div class="subnav">
+                <button class="subnavbtn"onclick = getImages(viewer,viewer2)>Save file in png <i class="fa fa-caret-down"></i></button>
+              </div>
               </div>
         <div class="row">
         <div id="container-01" class="mol-container"></div>
@@ -53,17 +50,10 @@
         </div>
         </section>
         <hr>
-        <section>
-            <h1>Alignement des séquences protéiques</h1>
-            <div id="seq1"></div>
-            <div id="seq2"></div>
-        </section>
         <script src="select.js"></script>
         <script src="load.js"></script>
         <script src="protein.js"></script>
         <script src="parser.js"></script>
         <script src="nw.js"></script>
-        <button onclick = nw(seq1,seq2)>Alignement</button>
-        <button onclick = getImages(viewer,viewer2)>png</button>
     </body>
 </html>
