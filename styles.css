@@ -1,5 +1,23 @@
 body {
-    font-family: "Trebuchet MS";
+    background-color: rgb(70, 70, 70);
+}
+
+h1 { 
+  width: 30%;
+  color: rgb(255, 255, 255);
+  font-size: 50px;
+  background-color: rgba(70, 70, 70);
+  font-weight: bold;
+  letter-spacing: -1px;
+  line-height: 3.5;
+  text-align: center;
+  font-family: Stencil Std, fantasy;
+  margin: auto;
+}
+
+#titre{
+  vertical-align: middle;
+  background-image:url(Protein_composite.png), linear-gradient(to bottom, #1ABC9C, #1abc9c32);
 }
 .menu {
     display: flex;                /* Transformation en flexbox */
@@ -31,16 +49,11 @@ body {
     color: #1ABC9C ;
     border-color: #1ABC9C ;
 }
-.menu a:hover,
-.menu a:hover.actif{
-    background-color: #ed2794;
-    color: #ffe843;
-    border-color: #ffe843;
-}
+
 
 .mol-container {
     width: 60%;
-    height: 600px;
+    height: 500px;
     position: relative;
     flex: 1; 
     padding: 1em;
@@ -56,7 +69,6 @@ body {
 .navbar {
     overflow: hidden;
     background-color: #333;
-    height: 70px;
   }
   
   /* Navigation links */
@@ -67,14 +79,12 @@ body {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    height: 70px;
   }
   
   /* The subnavigation menu */
   .subnav {
     float: left;
     overflow: hidden;
-    height: 70px;
   }
   
   /* Subnav button */

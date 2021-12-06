@@ -20,3 +20,4 @@ const creation_prot = (id) => {
 
 let histo_prot = [];
 let histo_id = [];
+console.log(histo_prot);
