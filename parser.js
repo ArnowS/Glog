@@ -78,7 +78,6 @@ function getType(row) {
     let row_seq = '';
     for (let i=4; i<row_space.length; i++){
       let index = dico.code3.indexOf(row_space[i]);
-      let AA = {aa:'',position:''};
       if (index != -1){
         row_space[i] = dico.code1[index];
         row_seq += row_space[i];
