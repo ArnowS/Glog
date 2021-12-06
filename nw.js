@@ -745,10 +745,19 @@ var blossum62 = {
     }
 }
 
-let monAlignement = new Alignement(histo_prot[histo_prot.length - 2], histo_prot[histo_prot.length - 1]);
-monAlignement.alignements = nw(monAlignement.proteine1.pdb.sequence.seq, monAlignement.proteine2.pdb.sequence.seq);
-monAlignement.score = scoreNW(monAlignement.alignements[0], monAlignement.alignements[1]);
+const runAlignement = (proteines) => {
+    // Alignement des deux dernières protéines chargées 
+    let monAlignement = new Alignement(proteines[proteines.length - 2], proteines[proteines.length - 1]);
+    monAlignement.alignements = nw(monAlignement.proteine1.pdb.sequence.seq, monAlignement.proteine2.pdb.sequence.seq);
+    monAlignement.score = scoreNW(monAlignement.alignements[0], monAlignement.alignements[1]);
+    let toExport = JSON.stringify(monAlignement);
+    console.log(monAlignement);
+    console.log(toExport);
+}
 
-let toExport = JSON.stringify(monAlignement);
+const loadAlignement = (results) => {
+    let display = document.getElementById("alignement");
+    display.textContent('Proteine 1', results[0]);
+    display.textContent('Proteine 2', results[1]);
 
-console.log(monAlignement);
+}
