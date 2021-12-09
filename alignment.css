@@ -1,0 +1,47 @@
+.alignment-div {
+    width: 100%;
+    margin: 0px 0px 0px 0px;
+    background-color: #272727;
+    display: flex;
+    justify-content: space-between;
+}
+
+.alignment-1 {
+    width: 85%;
+    overflow: auto;
+    white-space: nowrap;
+    text-align: left;
+    background-color: rgb(56, 56, 56);
+    margin: 10px 10px 10px 10px;
+    color: #ebebeb;
+}
+
+.alignment-2 {
+    margin: 10px 10px 10px 10px;
+}
+
+.alignment-headers {
+    width: 220px;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 0px 0px 0px;
+    text-align: right;
+}
+
+.alignment-results {
+    width: 220px;
+    display: flex;
+    justify-content: space-between;
+    color: #ffffff;
+    margin: 5px 0px 0px 0px;
+    text-align: right;
+}
+
+#seq1 {
+    margin: 0px 5px 5px 5px;
+}
+
+#seq2 {
+    margin: 0px 5px 0px 5px;
+}
