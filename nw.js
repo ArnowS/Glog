@@ -85,13 +85,37 @@ function nw(x, y, gap = -4) {
     return [alignmentX, alignmentY];
 }
 
+
+// Alignment results : sequence B is aligned with sequence A
+
+function scoreIdentity(A, B) {
+    let score = 0;
+    for (let i = 0; i < B.length; i++) {
+        if (A[i] === B[i]) {
+            score += 1;
+        }
+    }
+    return score;
+}
+
 function scoreNW(A, B) {
     let score = 0;
-    for (let i = 0; i < A.length; i++) {
+    for (let i = 0; i < B.length; i++) {
         score += blossum62[A[i]][B[i]];
     }
     return score;
 }
+
+function gapsNumber(A, B) {
+    let value = 0;
+    for (let i = 0; i < A.length; i++) {
+        if (A[i] === '-' || B[i] === '-') {
+            value += 1;
+        }
+    }
+    return value;
+}
+
 
 //----------------------------------- MAIN -----------------------------------//
 
@@ -745,19 +769,33 @@ var blossum62 = {
     }
 }
 
-const runAlignement = (proteines) => {
-    // Alignement des deux dernières protéines chargées 
-    let monAlignement = new Alignement(proteines[proteines.length - 2], proteines[proteines.length - 1]);
-    monAlignement.alignements = nw(monAlignement.proteine1.pdb.sequence.seq, monAlignement.proteine2.pdb.sequence.seq);
-    monAlignement.score = scoreNW(monAlignement.alignements[0], monAlignement.alignements[1]);
-    let toExport = JSON.stringify(monAlignement);
-    console.log(monAlignement);
-    console.log(toExport);
+const loadAlignement = (results) => {
+    let display1 = document.getElementById("seq1");
+    display1.innerHTML = 'Proteine_1 ' + results.alignements[0];
+    let display2 = document.getElementById("seq2");
+    display2.innerHTML = 'Proteine_2 ' + results.alignements[1];
+    let displayScore = document.getElementById("score");
+    displayScore.innerHTML = results.score;
+    let displayIdentities = document.getElementById("identities");
+    displayIdentities.innerHTML = results.identities;
+    let displayGaps = document.getElementById("gaps");
+    displayGaps.innerHTML = results.gaps;
 }
 
-const loadAlignement = (results) => {
-    let display = document.getElementById("alignement");
-    display.textContent('Proteine 1', results[0]);
-    display.textContent('Proteine 2', results[1]);
+const runAlignement = (proteines) => {
+    // Récupère les deux protéines chargées
+    let proteine1 = proteines.find(prot => prot.id == q.value);
+    let proteine2 = proteines.find(prot => prot.id == q2.value);
+    // Alignement des deux protéines chargées 
+    let monAlignement = new Alignement(proteine1, proteine2);
+    // Ajout des résultats de l'alignement et des scores
+    monAlignement.alignements = nw(monAlignement.proteine1.pdb.sequence.seq, monAlignement.proteine2.pdb.sequence.seq);
+    monAlignement.score = scoreNW(monAlignement.alignements[0], monAlignement.alignements[1]);
+    monAlignement.identities = scoreIdentity(monAlignement.alignements[0], monAlignement.alignements[1]);
+    monAlignement.gaps = gapsNumber(monAlignement.alignements[0], monAlignement.alignements[1]);
 
+    //let toExport = JSON.stringify(monAlignement);
+    console.log(monAlignement);
+    // Affichage de l'alignement sur ma page HTML
+    loadAlignement(monAlignement);
 }
