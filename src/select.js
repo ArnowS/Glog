@@ -15,7 +15,7 @@ function LoadPDB(){
 }
 let element = $('#container-01');
 let element2= $('#container-02');
-let config = { backgroundColor: 'white' };
+let config = { backgroundColor: 'grey' };
 /*let viewer = $3Dmol.createViewer( element, config );
     $3Dmol.download("pdb:1FAT",viewer,{multimodel:true, frames:true},function(){
     viewer.setStyle({chain:'B'},{cartoon:{color:'red'}});
@@ -24,19 +24,13 @@ let config = { backgroundColor: 'white' };
     viewer.zoom(1, 2000);
 });*/
 
-function setStyleProt(v){
-$3Dmol.download("pdb:7K9J",v,{multimodel:true, frames:true},function(){
-    v.setStyle({chain:'B'},{cartoon:{color:'green'}});
-    v.render();
-    v.zoom(1, 2000);
-    })
-};
+
 $("#Cart").on('click', function() {
-    viewer2.setStyle({cartoon:{}});
+    viewer2.setStyle({cartoon:{color:"white"}});
     viewer2.render();
 });
 $("#Cart").on('click', function() {
-    viewer.setStyle({cartoon:{}});
+    viewer.setStyle({cartoon:{color:"white"}});
     viewer.render();
 });
 $("#Lin").on('click', function() {

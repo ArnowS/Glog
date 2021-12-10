@@ -17,8 +17,8 @@ function submit_seq(){
     let ind1 = histo_id.indexOf(q.value.toUpperCase());
     let ind2 = histo_id.indexOf(q2.value.toUpperCase());
     console.info(ind1,ind2);
-    seq1 = histo_prot[ind1]["pdb"]["sequence"];
-    seq2 = histo_prot[ind2]["pdb"]["sequence"];
+    seq1 = histo_prot[ind1]["pdb"]["sequence"]["seq"];
+    seq2 = histo_prot[ind2]["pdb"]["sequence"]["seq"];
     idseq1.innerHTML = seq1;
     idseq2.innerHTML = seq2;
 }

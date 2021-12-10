@@ -8,7 +8,7 @@ const url_app = 'visuprot'
 
 app.use(express.static(__dirname));
 app.get(`/${url_app}`, function(req, res) {
-    res.sendFile(__dirname + '/archiTest.html');
+    res.sendFile(__dirname + '/Vizzal.html');
 });
 app.listen(port, () => {
     console.log(`app is running at http://${hostname}:${port}/${url_app}`);

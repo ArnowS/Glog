@@ -771,9 +771,9 @@ var blossum62 = {
 
 const loadAlignement = (results) => {
     let display1 = document.getElementById("seq1");
-    display1.innerHTML = 'Proteine_1 ' + results.alignements[0];
+    display1.innerHTML = q.value + " : " + results.alignements[0];
     let display2 = document.getElementById("seq2");
-    display2.innerHTML = 'Proteine_2 ' + results.alignements[1];
+    display2.innerHTML = q2.value + " : " + results.alignements[1];
     let displayScore = document.getElementById("score");
     displayScore.innerHTML = results.score;
     let displayIdentities = document.getElementById("identities");
@@ -795,7 +795,6 @@ const runAlignement = (proteines) => {
     monAlignement.gaps = gapsNumber(monAlignement.alignements[0], monAlignement.alignements[1]);
 
     //let toExport = JSON.stringify(monAlignement);
-    console.log(monAlignement);
     // Affichage de l'alignement sur ma page HTML
     loadAlignement(monAlignement);
 }

@@ -1,18 +1,22 @@
 body {
-    background-color: rgb(70, 70, 70);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgb(31, 31, 31)), to(#6b6b6b));
+  font-family: 'Roboto Mono', monospace;
 }
 
 h1 { 
   width: 30%;
-  color: rgb(255, 255, 255);
-  font-size: 50px;
-  background-color: rgba(70, 70, 70);
+  color: #14806a;
+  font-size:50px;
+  font-style: oblique;
+  background-color: #333;
   font-weight: bold;
-  letter-spacing: -1px;
+  letter-spacing: 5px;
   line-height: 3.5;
   text-align: center;
-  font-family: Stencil Std, fantasy;
   margin: auto;
+  border-style:solid;
+  border-width: thick;
+  border-color: grey;
 }
 
 #titre{
@@ -36,7 +40,7 @@ h1 {
     margin: 0.5rem;               /* Marges externes */
     padding: 0.4rem 0;            /* Marges internes */
     text-align: center;           /* Centrage du texte */   
-    background-color: #1ABC9C;    /* Arrière-plan */
+    background-color: #14806a;    /* Arrière-plan */
     color: #fff;                  /* Couleur du texte */
     text-decoration: none;        /* Suppression du soulignement */
     border: 1px solid #fff;       /* Ajout d'une bordure */
@@ -46,8 +50,8 @@ h1 {
 }
 .menu a.actif {    
     background-color: #000 ; 
-    color: #1ABC9C ;
-    border-color: #1ABC9C ;
+    color: #14806a ;
+    border-color: #14806a ;
 }
 
 
@@ -101,7 +105,7 @@ h1 {
   
   /* Add a red background color to navigation links on hover */
   .navbar a:hover, .subnav:hover .subnavbtn {
-    background-color: #1abc9c;
+    background-color: #14806a;
   }
   
   /* Style the subnav content - positioned absolute */
@@ -109,7 +113,7 @@ h1 {
     display: none;
     position: absolute;
     left: 0;
-    background-color: #1abc9c;
+    background-color: #14806a;
     width: 100%;
     z-index: 1;
   }
