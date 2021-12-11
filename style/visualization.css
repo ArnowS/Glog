@@ -1,0 +1,12 @@
+.mol-container {
+    width: 60%;
+    height: 500px;
+    position: relative;
+    flex: 1;
+    padding: 1em;
+    border: solid;
+}
+
+.row {
+    display: flex;
+}
