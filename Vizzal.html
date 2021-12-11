@@ -10,15 +10,21 @@
     <title>Vizzal</title>
     <link rel="stylesheet" href="style/styles.css">
     <link rel="stylesheet" href="style/alignment.css">
+    <link rel="stylesheet" href="style/menu.css">
+    <link rel="stylesheet" href="style/visualization.css">
+    <link rel="shortcut icon" href="#">
 </head>
 
 <body>
 
-    <div id="titre">
+    <div id="title">
         <h1 style="font-family: 'Roboto Mono', monospace;"> >Vizzal_</h1>
     </div>
+
     <hr>
+
     <section>
+
         <script src="http://3Dmol.csb.pitt.edu/build/3Dmol-min.js"></script>
 
         <div class="navbar">
@@ -41,14 +47,14 @@
                     <a href="#" id='Cros'>Cross</a>
                 </div>
             </div>
-            <div class="subnav" id="alignement">
-                <button class="subnavbtn" onclick=runAlignement(histo_prot)>Alignment <i class="fa fa-caret-down"></i></button>
+            <div class="subnav" id="alignment">
+                <button class="subnavbtn" onclick=runAlignment(histo_prot)>Alignment <i class="fa fa-caret-down"></i></button>
             </div>
             <div class="subnav">
                 <button class="subnavbtn" onclick=getImages(viewer,viewer2)>Save file as png <i class="fa fa-caret-down"></i></button>
             </div>
-            <div class="subnav" id="saveAlignement">
-                <button class="subnavbtn" onclick=saveStaticDataToFile(monAlignement)> Save Alignment in text file <i class="fa fa-caret-down"></i></button>
+            <div class="subnav" id="saveAlignment">
+                <button class="subnavbtn" onclick=saveStaticDataToFile(myAlignment)> Save Alignment in text file <i class="fa fa-caret-down"></i></button>
             </div>
         </div>
 
@@ -56,7 +62,6 @@
             <div id="container-01" class="mol-container"></div>
             <div id="container-02" class="mol-container"></div>
         </div>
-
 
         <div class="alignment-div">
             <div class="alignment-1">
@@ -78,9 +83,10 @@
             </div>
         </div>
 
-
     </section>
+
     <hr>
+
     <script src="src/FileSaver.js"></script>
     <script src="src/3DComm.js"></script>
     <script src="src/select.js"></script>
@@ -88,6 +94,7 @@
     <script src="src/protein.js"></script>
     <script src="src/parser.js"></script>
     <script src="src/nw.js"></script>
+
 </body>
 
 </html>
