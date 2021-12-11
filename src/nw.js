@@ -769,6 +769,14 @@ var blossum62 = {
     }
 }
 
+const clearAlignment = () => {
+    document.getElementById("seq1").innerHTML = "";
+    document.getElementById("seq2").innerHTML = "";
+    document.getElementById("score").innerHTML = "";
+    document.getElementById("identities").innerHTML = "";
+    document.getElementById("gaps").innerHTML = "";
+}
+
 const loadAlignement = (results) => {
     let display1 = document.getElementById("seq1");
     display1.innerHTML = q.value.toUpperCase() + " : " + results.alignements[0];
