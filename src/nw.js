@@ -95,7 +95,7 @@ function scoreIdentity(A, B) {
             score += 1;
         }
     }
-    return score;
+    return Math.round((score / B.length) * 100) / 100;;
 }
 
 function scoreNW(A, B) {
@@ -103,7 +103,7 @@ function scoreNW(A, B) {
     for (let i = 0; i < B.length; i++) {
         score += blossum62[A[i]][B[i]];
     }
-    return Math.round((score / B.length) * 100) / 100;
+    return score;
 }
 
 function gapsNumber(A, B) {
@@ -780,12 +780,16 @@ const clearAlignment = () => {
 const loadAlignement = (results) => {
     let display1 = document.getElementById("seq1");
     display1.innerHTML = q.value.toUpperCase() + " : " + results.alignements[0];
+
     let display2 = document.getElementById("seq2");
     display2.innerHTML = q2.value.toUpperCase() + " : " + results.alignements[1];
+
     let displayScore = document.getElementById("score");
     displayScore.innerHTML = results.score;
+
     let displayIdentities = document.getElementById("identities");
     displayIdentities.innerHTML = results.identities;
+
     let displayGaps = document.getElementById("gaps");
     displayGaps.innerHTML = results.gaps;
 }
