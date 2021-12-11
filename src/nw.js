@@ -822,5 +822,5 @@ function saveStaticDataToFile(monAlignement) {
         "%Gaps : " + monAlignement.gaps + "\n" +
         "%Identity : " + monAlignement.identities;
     var blob = new Blob([align], { type: "text/plain;charset=utf-8" });
-    saveAs(blob, "alignment_results.txt");
+    saveAs(blob, `alignment_results_${monAlignement.proteine1.id}_${monAlignement.proteine2.id}.txt`);
 }
