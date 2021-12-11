@@ -1,11 +1,11 @@
-class Alignement {
-    constructor(proteine1, proteine2) {
-        this.proteine1 = proteine1;
-        this.proteine2 = proteine2;
+class Alignment {
+    constructor(protein1, protein2) {
+        this.protein1 = protein1;
+        this.protein2 = protein2;
     }
 }
 
-let monAlignement;
+
 //--------------------------------- FUNCTIONS --------------------------------//
 
 function createArray(length) {
@@ -20,7 +20,7 @@ function createArray(length) {
     return arr;
 }
 
-function createMatrice(x, y, gap = -4) {
+function createMatrix(x, y, gap = -4) {
     let nx = x.length;
     let ny = y.length;
     let F = createArray(nx, ny);
@@ -48,7 +48,7 @@ function reverseString(str) {
 function nw(x, y, gap = -4) {
     x = reverseString(x.toUpperCase())
     y = reverseString(y.toUpperCase())
-    F = createMatrice(x, y);
+    F = createMatrix(x, y);
     let alignmentX = '';
     let alignmentY = '';
     i = x.length - 1;
@@ -119,6 +119,8 @@ function gapsNumber(A, B) {
 
 
 //----------------------------------- MAIN -----------------------------------//
+
+let myAlignment;
 
 var blossum62 = {
     '-': {
@@ -778,12 +780,12 @@ const clearAlignment = () => {
     document.getElementById("gaps").innerHTML = "";
 }
 
-const loadAlignement = (results) => {
+const loadAlignment = (results) => {
     let display1 = document.getElementById("seq1");
-    display1.innerHTML = q.value.toUpperCase() + " : " + results.alignements[0];
+    display1.innerHTML = q.value.toUpperCase() + " : " + results.alignments[0];
 
     let display2 = document.getElementById("seq2");
-    display2.innerHTML = q2.value.toUpperCase() + " : " + results.alignements[1];
+    display2.innerHTML = q2.value.toUpperCase() + " : " + results.alignments[1];
 
     let displayScore = document.getElementById("score");
     displayScore.innerHTML = results.score;
@@ -795,32 +797,28 @@ const loadAlignement = (results) => {
     displayGaps.innerHTML = results.gaps;
 }
 
-const runAlignement = (proteines) => {
-    // Récupère les deux protéines chargées
-    let proteine1 = proteines.find(prot => prot.id == q.value.toUpperCase());
-    let proteine2 = proteines.find(prot => prot.id == q2.value.toUpperCase());
+const runAlignment = (proteins) => {
+    let protein1 = proteins.find(prot => prot.id == q.value.toUpperCase());
+    let protein2 = proteins.find(prot => prot.id == q2.value.toUpperCase());
 
-    // Alignement des deux protéines chargées 
-    monAlignement = new Alignement(proteine1, proteine2);
-    // Ajout des résultats de l'alignement et des scores
-    monAlignement.alignements = nw(monAlignement.proteine1.pdb.sequence.seq, monAlignement.proteine2.pdb.sequence.seq);
-    monAlignement.score = scoreNW(monAlignement.alignements[0], monAlignement.alignements[1]);
-    monAlignement.identities = scoreIdentity(monAlignement.alignements[0], monAlignement.alignements[1]);
-    monAlignement.gaps = gapsNumber(monAlignement.alignements[0], monAlignement.alignements[1]);
+    myAlignment = new Alignment(protein1, protein2);
 
-    //let toExport = JSON.stringify(monAlignement);
-    // Affichage de l'alignement sur ma page HTML
-    loadAlignement(monAlignement);
+    myAlignment.alignments = nw(myAlignment.protein1.pdb.sequence.seq, myAlignment.protein2.pdb.sequence.seq);
+    myAlignment.score = scoreNW(myAlignment.alignments[0], myAlignment.alignments[1]);
+    myAlignment.identities = scoreIdentity(myAlignment.alignments[0], myAlignment.alignments[1]);
+    myAlignment.gaps = gapsNumber(myAlignment.alignments[0], myAlignment.alignments[1]);
+
+    loadAlignment(myAlignment);
 }
 
 
-function saveStaticDataToFile(monAlignement) {
+function saveStaticDataToFile(myAlignment) {
     let align = "Alignment results \n\n" +
-        monAlignement.proteine1.id + " : " + monAlignement.alignements[0] + "\n" +
-        monAlignement.proteine2.id + " : " + monAlignement.alignements[1] + "\n\n" +
-        "Scores : " + monAlignement.score + "\n" +
-        "%Gaps : " + monAlignement.gaps + "\n" +
-        "%Identity : " + monAlignement.identities;
+        myAlignment.protein1.id + " : " + myAlignment.alignments[0] + "\n" +
+        myAlignment.protein2.id + " : " + myAlignment.alignments[1] + "\n\n" +
+        "Scores : " + myAlignment.score + "\n" +
+        "%Gaps : " + myAlignment.gaps + "\n" +
+        "%Identity : " + myAlignment.identities;
     var blob = new Blob([align], { type: "text/plain;charset=utf-8" });
     saveAs(blob, "alignment_results.txt");
 }

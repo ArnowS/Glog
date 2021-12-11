@@ -1,3 +1,11 @@
+/*
+ * Quentin BLECHET
+ * Patrick JACQUES
+ * Marc MEYNADIER
+ * Clément SAUVESTRE
+ * Arnaud SIMON
+ */
+
 let Comm = new AppComm();
 const q = document.getElementById('query');
 const q2 = document.getElementById('query2');
@@ -39,6 +47,9 @@ function getImages(viewer, viewer2) {
     downloadURI(viewer.pngURI())
     downloadURI(viewer2.pngURI())
 }
+
+
+//to_complete 
 
 function getModels(viewer, viewer2) {
     JSON1 = exportJSON(includesStyles = True, viewer.getModel())
