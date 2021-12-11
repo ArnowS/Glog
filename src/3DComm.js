@@ -19,4 +19,14 @@ class AppComm {
             histo_id.push(q.value.toUpperCase());
         }
     }
+    saveTxt(myAlignment) {
+        let align = "Alignment results \n\n" +
+            myAlignment.protein1.id + " : " + myAlignment.alignments[0] + "\n" +
+            myAlignment.protein2.id + " : " + myAlignment.alignments[1] + "\n\n" +
+            "Scores : " + myAlignment.score + "\n" +
+            "%Gaps : " + myAlignment.gaps + "\n" +
+            "%Identity : " + myAlignment.identities;
+        var blob = new Blob([align], { type: "text/plain;charset=utf-8" });
+        saveAs(blob, `alignment_results_${myAlignment.protein1.id}_${myAlignment.protein2.id}.txt`);
+    }
 }
