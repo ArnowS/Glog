@@ -103,17 +103,17 @@ function scoreNW(A, B) {
     for (let i = 0; i < B.length; i++) {
         score += blossum62[A[i]][B[i]];
     }
-    return score;
+    return Math.round((score / B.length) * 100) / 100;
 }
 
 function gapsNumber(A, B) {
     let value = 0;
-    for (let i = 0; i < A.length; i++) {
+    for (let i = 0; i < B.length; i++) {
         if (A[i] === '-' || B[i] === '-') {
             value += 1;
         }
     }
-    return value;
+    return Math.round((value / B.length) * 100) / 100;
 }
 
 
@@ -771,9 +771,9 @@ var blossum62 = {
 
 const loadAlignement = (results) => {
     let display1 = document.getElementById("seq1");
-    display1.innerHTML = q.value + " : " + results.alignements[0];
+    display1.innerHTML = q.value.toUpperCase() + " : " + results.alignements[0];
     let display2 = document.getElementById("seq2");
-    display2.innerHTML = q2.value + " : " + results.alignements[1];
+    display2.innerHTML = q2.value.toUpperCase() + " : " + results.alignements[1];
     let displayScore = document.getElementById("score");
     displayScore.innerHTML = results.score;
     let displayIdentities = document.getElementById("identities");
@@ -784,8 +784,9 @@ const loadAlignement = (results) => {
 
 const runAlignement = (proteines) => {
     // Récupère les deux protéines chargées
-    let proteine1 = proteines.find(prot => prot.id == q.value);
-    let proteine2 = proteines.find(prot => prot.id == q2.value);
+    let proteine1 = proteines.find(prot => prot.id == q.value.toUpperCase());
+    let proteine2 = proteines.find(prot => prot.id == q2.value.toUpperCase());
+
     // Alignement des deux protéines chargées 
     let monAlignement = new Alignement(proteine1, proteine2);
     // Ajout des résultats de l'alignement et des scores
