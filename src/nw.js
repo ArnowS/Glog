@@ -5,6 +5,7 @@ class Alignement {
     }
 }
 
+let monAlignement;
 //--------------------------------- FUNCTIONS --------------------------------//
 
 function createArray(length) {
@@ -788,7 +789,7 @@ const runAlignement = (proteines) => {
     let proteine2 = proteines.find(prot => prot.id == q2.value.toUpperCase());
 
     // Alignement des deux protéines chargées 
-    let monAlignement = new Alignement(proteine1, proteine2);
+    monAlignement = new Alignement(proteine1, proteine2);
     // Ajout des résultats de l'alignement et des scores
     monAlignement.alignements = nw(monAlignement.proteine1.pdb.sequence.seq, monAlignement.proteine2.pdb.sequence.seq);
     monAlignement.score = scoreNW(monAlignement.alignements[0], monAlignement.alignements[1]);
@@ -798,4 +799,17 @@ const runAlignement = (proteines) => {
     //let toExport = JSON.stringify(monAlignement);
     // Affichage de l'alignement sur ma page HTML
     loadAlignement(monAlignement);
+}
+
+
+function saveStaticDataToFile(monAlignement) {
+    let align = "Alignment results \n\n" +
+                monAlignement.proteine1.id + " : " + monAlignement.alignements[0] + "\n" +
+                monAlignement.proteine2.id + " : " + monAlignement.alignements[1] + "\n\n" +
+                "Scores : " + monAlignement.score + "\n" +
+                "Gaps : " + monAlignement.gaps + "\n" +
+                "Identities : " + monAlignement.identities;
+    var blob = new Blob([align],
+        { type: "text/plain;charset=utf-8" });
+    saveAs(blob, "alignment_results.txt");
 }

@@ -47,6 +47,9 @@
             <div class="subnav">
                 <button class="subnavbtn" onclick=getImages(viewer,viewer2)>Save file as png <i class="fa fa-caret-down"></i></button>
             </div>
+            <div class="subnav" id="saveAlignement">
+                <button class="subnavbtn" onclick=saveStaticDataToFile(monAlignement)> Save Alignment in text file <i class="fa fa-caret-down"></i></button>
+            </div>
         </div>
 
         <div class="row">
@@ -78,6 +81,7 @@
 
     </section>
     <hr>
+    <script src="src/FileSaver.js"></script>
     <script src="src/3DComm.js"></script>
     <script src="src/select.js"></script>
     <script src="src/load.js"></script>
