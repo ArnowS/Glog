@@ -96,7 +96,7 @@ function scoreIdentity(A, B) {
             score += 1;
         }
     }
-    return Math.round((score / B.length) * 100) / 100;;
+    return Math.round((score / B.length) * 100);;
 }
 
 function scoreNW(A, B) {
@@ -114,7 +114,7 @@ function gapsNumber(A, B) {
             value += 1;
         }
     }
-    return Math.round((value / B.length) * 100) / 100;
+    return Math.round((value / B.length) * 100);
 }
 
 
@@ -816,12 +816,11 @@ const runAlignement = (proteines) => {
 
 function saveStaticDataToFile(monAlignement) {
     let align = "Alignment results \n\n" +
-                monAlignement.proteine1.id + " : " + monAlignement.alignements[0] + "\n" +
-                monAlignement.proteine2.id + " : " + monAlignement.alignements[1] + "\n\n" +
-                "Scores : " + monAlignement.score + "\n" +
-                "Gaps : " + monAlignement.gaps + "\n" +
-                "Identities : " + monAlignement.identities;
-    var blob = new Blob([align],
-        { type: "text/plain;charset=utf-8" });
+        monAlignement.proteine1.id + " : " + monAlignement.alignements[0] + "\n" +
+        monAlignement.proteine2.id + " : " + monAlignement.alignements[1] + "\n\n" +
+        "Scores : " + monAlignement.score + "\n" +
+        "%Gaps : " + monAlignement.gaps + "\n" +
+        "%Identity : " + monAlignement.identities;
+    var blob = new Blob([align], { type: "text/plain;charset=utf-8" });
     saveAs(blob, "alignment_results.txt");
 }
