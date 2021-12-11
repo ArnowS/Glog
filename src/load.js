@@ -24,8 +24,8 @@ function submit_seq() {
     idseq2.innerHTML = seq2;
 }
 
-function downloadURI(uri) {
-    n = `${new Date().getTime()}.png`;
+function downloadURI(id,uri) {
+    n = `${id.toUpperCase()}.png`;
     var link = document.createElement("a");
     link.download = n;
     link.href = uri;
@@ -36,8 +36,8 @@ function downloadURI(uri) {
 }
 
 function getImages(viewer, viewer2) {
-    downloadURI(viewer.pngURI())
-    downloadURI(viewer2.pngURI())
+    downloadURI(q.value,viewer.pngURI())
+    downloadURI(q2.value,viewer2.pngURI())
 }
 
 function getModels(viewer, viewer2) {
